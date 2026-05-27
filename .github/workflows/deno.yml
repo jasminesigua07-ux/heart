@@ -1,0 +1,32 @@
+<p>Love you.</p>
+```0
+      - name: i love you
+        run: deno lint
+
+      - name: i love you
+        run: deno test -A
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#111;
+    overflow:hidden;
+}
+
+p{
+    color:white;
+    font-size:60px;
+    font-family:"Poppins", sans-serif;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #fff;
+    }
+    to{
+        text-shadow:0 0 30px #ff4d6d;
+    }
+}
