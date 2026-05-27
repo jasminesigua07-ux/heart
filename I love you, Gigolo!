@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Heart Landing</title>
+
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:black;
+        overflow:hidden;
+        font-family:Arial, sans-serif;
+    }
+
+    .heart{
+        position:relative;
+        width:500px;
+        height:450px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        filter: drop-shadow(0 0 20px red);
+    }
+
+    .text{
+        position:absolute;
+        color:white;
+        font-size:60px;
+        font-weight:bold;
+        z-index:2;
+        text-shadow:0 0 10px white;
+    }
+
+    .particle{
+        position:absolute;
+        color:#ff4d6d;
+        font-size:14px;
+        animation: glow 2s infinite alternate;
+        user-select:none;
+    }
+
+    @keyframes glow{
+        from{
+            opacity:0.6;
+            text-shadow:0 0 5px red;
+        }
+        to{
+            opacity:1;
+            text-shadow:0 0 15px red;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="heart" id="heart">
+    <div class="text">Love you</div>
+</div>
+
+<script>
+const heart = document.getElementById("heart");
+
+function createHeartText() {
+
+    for(let t = 0; t < Math.PI * 2; t += 0.05){
+
+        // Heart equation
+        let x = 16 * Math.pow(Math.sin(t), 3);
+        let y =
+            13 * Math.cos(t)
+            - 5 * Math.cos(2 * t)
+            - 2 * Math.cos(3 * t)
+            - Math.cos(4 * t);
+
+        // Scale
+        x *= 15;
+        y *= 15;
+
+        // Create text particle
+        const span = document.createElement("span");
+        span.className = "particle";
+        span.innerText = "I love you";
+
+        span.style.left = `${250 + x}px`;
+        span.style.top = `${220 - y}px`;
+
+        // Random animation delay
+        span.style.animationDelay = `${Math.random()*2}s`;
+
+        heart.appendChild(span);
+    }
+}
+
+createHeartText();
+</script>
+
+</body>
+</html>
